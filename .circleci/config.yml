@@ -1,0 +1,20 @@
+version: 2.1
+
+orbs:
+  go: circleci/go@1.21.0
+
+jobs:
+  build_and_test:
+    executor:
+      name: go/default
+      tag: '1.21'
+    steps:
+      - checkout
+      - build
+      - run:
+        command: "go run gotest.tools/gotestsum@latest"
+
+workflows:
+  dce_challenge:
+    jobs:
+      - build_and_test
