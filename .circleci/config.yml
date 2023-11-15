@@ -10,7 +10,9 @@ jobs:
       tag: '1.21'
     steps:
       - checkout
-      - build
+      - go/install
+      - run:
+        command: "go build"
       - run:
         command: "go run gotest.tools/gotestsum@latest"
 
